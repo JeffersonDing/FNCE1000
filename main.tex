@@ -1,0 +1,152 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Jefferson Ding's Writing Template
+% Modified from Jefferson's IB Template
+% Modified from OIST Doctoral Thesis
+% LaTeX Template
+% Version 0.1 (2021/11)
+% Version 1.0 (2023/8)
+%
+% Author:
+% Jefferson Ding
+% Original author:
+% Jeremie Gillet
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%-------------------------------------------------------------------------------
+%	REQUIRED PACKAGES AND  CONFIGURATIONS
+%-------------------------------------------------------------------------------
+
+\documentclass[final]{writing_template} 
+
+% The documentclass ib_template includes the following packages: geometry, caption, xkeyval
+
+\usepackage[english]{babel} % The document is in English
+\usepackage[utf8]{inputenc} % UTF8 encoding
+\usepackage[T1]{fontenc} % Font encoding
+
+\usepackage{graphicx} % For including images
+\graphicspath{{./img/}} % Specifies the directory where pictures are stored
+
+\usepackage{setspace} % For using single or double spacing
+\usepackage{longtable} % tables that can span several pages
+\usepackage{pdfpages} % To include a pdf files of your published papers as an appendix
+\usepackage{fancyhdr} % For the headers
+\usepackage{hyperref} % Adds clickable links at references
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+%----------------------------------------------------------------------------------------
+%	ADD YOUR PACKAGES (be careful of package interaction)
+%----------------------------------------------------------------------------------------
+
+\usepackage{amsthm,amsmath,amssymb,amsfonts,bbm}% Math symbols
+\usepackage{tikz,lipsum,lmodern}
+\usepackage[most]{tcolorbox}
+\usepackage{enumerate}
+
+%----------------------------------------------------------------------------------------
+%	ADD YOUR DEFINITIONS AND COMMANDS
+%----------------------------------------------------------------------------------------
+\newcommand{\quickwordcount}[1]{%
+  \immediate\write18{texcount -1 -sum -merge -q #1.tex > #1-words.sum }%
+  \input{#1-words.sum}%
+}
+
+\newcommand{\e}[1]{\times 10^{#1}}  % Powers of 10 notation
+
+\renewcommand{\newline}{\vspace{0.5em}}
+
+
+\newtcolorbox{examplebox}[2][]{colback=white!5!white,colframe=white!75!black,fonttitle=\bfseries,title=#2,#1}
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY 
+%----------------------------------------------------------------------------------------
+\usepackage[round]{natbib} 
+\bibliographystyle{bib/apa} % You may use a different style adapted to your field
+
+
+
+%-------------------------------------------------------------------------------
+%	TITLE PAGE
+%-------------------------------------------------------------------------------
+
+
+\begin{document}
+\pagestyle{empty} % No page numbers
+
+\puttitle{
+papertitle={FNCE 1000 Notes},
+%rq = {Test},
+school = {University of Pennsylvania},
+subject = {FNCE 1000},
+name = {Jefferson Ding},
+%supervisor = {Test},
+submissiondate = {F24},
+%wordcount= \quickwordcount{./main},
+}
+
+
+
+%-------------------------------------------------------------------------------
+%	PREAMBLE PAGES (comment unnecessary pages)
+%-------------------------------------------------------------------------------
+
+\startpreamble
+
+%-------------------------------------------------------------------------------
+%	LIST OF CONTENTS/FIGURES/TABLES
+%-------------------------------------------------------------------------------
+
+\unnumberedsection{Contents}
+\singlespacing
+\tableofcontents % Write out the Table of Contents
+\singlespacing
+
+
+
+%\unnumberedsection{List of Figures}
+%\listoffigures % Write out the List of Figures
+
+
+
+%\unnumberedsection{List of Tables}
+%\listoftables % Write out the List of Tables
+
+
+%-------------------------------------------------------------------------------
+%	PAPER MAIN TEXT
+%-------------------------------------------------------------------------------
+
+\addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for aesthetics
+
+\numberedsection
+\input{src/section1} % Input your sections here
+
+
+
+
+%-------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%-------------------------------------------------------------------------------
+
+%\addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for aesthetics
+%\unnumberedsection{Bibliography} % Title of the unnumbered section
+%\bibliography{bib/bibliography} % The references information are stored in the file named "bibliography.bib"
+
+
+
+%-------------------------------------------------------------------------------
+%	APPENDICES (optional)
+%-------------------------------------------------------------------------------
+
+% \addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for aesthetics
+% \appendix
+% \numberedsection % Regular sections following
+% \input{apx/appendixA}
+% \input{apx/appendixB}
+% \input{apx/appendixC}
+
+
+\end{document}

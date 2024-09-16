@@ -1,0 +1,114 @@
+\section{Time Value of Money}
+"The value of a dollar today is worth more than the value of a dollar in the future"
+
+\subsection{Foundational Concepts}
+\begin{enumerate}[I]
+	\item \textbf{Future Value (FV)} — The value of an assest in the future, follows:
+		$$
+		\textbf{FV} = \text{principal + interest}
+		$$
+	\item \textbf{Present Value (PV)} — The vale of an asset today with a respect to cash flow in the future, follows:
+		$$
+		\textbf{PV} = \frac{C_t}{(1 + r)}
+		$$
+		where $C_t$ is cash flow at time $t$, $\frac{1}{1+r}$ is the discount factor, and $r$ is the discount rate. For a general case, over $n$ periods, we have:
+		$$
+		\textbf{PV} = \sum_{t=1}^{n} \frac{C_t}{(1 + r)^t}
+		$$
+	\item \textbf{Net Present Value (NPV)} — The difference between the present value of cash inflows and outflows.
+		$$
+		\text{NPV} = \text{PV of future cash inflows} - \text{required investment}
+		$$
+		we accept a project if NPV > 0.
+		\begin{examplebox}{Example}
+			Required investment: \$3,500,000\\
+			Horizon: One year holding period\\
+			Projected value in one year: \$4,000,000\\
+		  Required return: 5\%
+			\begin{align*}
+				\textbf{PV} &= \frac{4,000,000}{1.05} = 3,809,523.81\\
+				\textbf{NPV} &= 3,809,523.81 - 3,500,000 = 309,523.81
+			\end{align*}
+			Thus, we will accept the project.
+		\end{examplebox}
+		Over a time horizon of $n$ years, we have:
+		$$
+		\textbf{NPV} = N_0 + \sum_{t=1}^{n} \frac{C_t}{(1 + r)^t}
+		$$
+	\item \textbf{Discount Factor} — The factor by which future cash flows are discounted to get the present value.
+		$$
+		\textbf{DF}_t = \frac{1}{(1 + r)^t}
+		$$
+		where $r$ is the discount rate and $t$ is the time period.
+
+		Discount factors have a decreasing property, i.e. $\textbf{DF}_{t+1} < \textbf{DF}_t$ due to the time value of money.
+
+		Therefore, we can equivilently write the \textbf{NPV} as:
+		$$
+		\textbf{NPV} = \sum_{t=0}^{n} C_t \cdot \textbf{DF}_t
+		$$
+	\item \textbf{Seperation Theorem} — he value of an investment to an individual is not dependent on consumption preferences. This theorem holds with the following assumptions:
+		\begin{enumerate}[i]
+			\item Trading is costless and access to the financial markets is free.
+			\item Borrowing and lending opportunities are available.
+			\item Distortions that have a significant impact on market prices can not exist (for example impact of liquidity or taxes)
+		\end{enumerate}
+\end{enumerate}
+\section{Simple Cash Flow Streams}
+In a general case, a simple cash flow stream can be described as:
+$$
+\textbf{PV} = \sum_{t=1}^{n} \frac{C_t}{(1 + r_t)^t}
+$$
+To simplify, with a flat term structure in interest rates, i.e. $r_t = r$ for all $t$, we can keep the discount rate constant.
+
+Recall, the summation of a geometric series:
+\begin{equation}\label{eq:geometric_series}
+\sum_{t=1}^{n} x^t = \frac{x(1 - x^n)}{1 - x}
+\end{equation}
+and when $|x| < 1$, we have:
+\begin{equation}\label{eq:inf_geometric_series}
+\sum_{t=1}^{\infty} x^t = \frac{x}{1 - x}
+\end{equation}
+\subsection{Constant Perpetuity}
+A perpetuity is a stream of cash flows that continues indefinitely. The present value of a perpetuity is given by:
+$$
+\textbf{PV} = \sum_{t=1}^{\infty} \frac{C}{(1 + r)^t}
+$$
+where $C$ is the cash at each period and $r$ is the discount rate. Thus, applying \eqref{eq:inf_geometric_series}, setting $x = \frac{1}{1 + r}$, we have:
+\begin{equation}\label{eq:const_perpetuity}
+\textbf{PV} = \frac{C}{r}
+\end{equation}
+\begin{examplebox}{Example}
+	Cash flow stream is an annual payment of \$100 per year forever. The annual interest rate is 8\%. Using the definition of present value we have:
+	$$
+	\textbf{PV} = \sum_{t=1}^{\infty} \frac{100}{(1 + 0.08)^t}
+	$$
+	using \eqref{eq:const_perpetuity}:
+	$$
+	\textbf{PV} = \frac{100}{0.08} = 1,250
+	$$
+\end{examplebox}
+\subsection{Growing Perpetuity}
+A growing perpetuity is a stream of cash flows that continues indefinitely with a constant growth rate. The present value of a growing perpetuity by first principals is given by:
+$$
+\textbf{PV} = \sum_{t=1}^{\infty} \frac{C \cdot (1 + g)^t}{(1 + r)^t}
+$$
+where $C$ is the cash at each period, $r$ is the discount rate, and $g$ is the growth rate. Thus, applying \eqref{eq:inf_geometric_series}, setting $x = \frac{1 + g}{1 + r}$, we have:
+\begin{equation}\label{eq:growing_perpetuity}
+\textbf{PV} = \frac{C}{r - g}
+\end{equation}
+\begin{examplebox}{Example}
+	Cash flow stream is an annual payment of \$100 first year (at time 1). The annual flow continues forever growing at an annual rate of 5\%. The annual interest rate is 8\%.
+	$$
+	\textbf{PV} = \sum_{t=1}^{\infty} \frac{100 \cdot (1 + 0.05)^t}{(1 + 0.08)^t}
+	$$
+	using \eqref{eq:growing_perpetuity}:
+	$$
+	\textbf{PV} = \frac{100}{0.08 - 0.05} = 3,333.33
+	$$
+\end{examplebox}
+\subsection{Delayed Perpetuity}
+\subsection{Constant Annuity}
+\subsection{Growing Annuity}
+\section{Interest Rates and Compounding}
+
