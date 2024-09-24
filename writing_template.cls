@@ -29,7 +29,7 @@
 	\newcommand{\startpreamble}{
 		\pagestyle{fancy} % Change the header style
 		\fancyhf{}% Clear header and footer
-		\rfoot{\tiny{Jefferson Ding 2024}}
+		\rfoot{\tiny{Jefferson Ding, F24}}
 		\lfoot{\tiny{Any unauthorized use, distribution or reproduction of this document is strictly prohibited.}}
 		\renewcommand{\sectionmark}[1]{\markboth{##1}{}} % Getting the chapter name right
 		\rhead{\thepage} % Page number at the right of the header

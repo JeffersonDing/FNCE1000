@@ -108,7 +108,214 @@ where $C$ is the cash at each period, $r$ is the discount rate, and $g$ is the g
 	$$
 \end{examplebox}
 \subsection{Delayed Perpetuity}
+A perpetuity that pays $C$ dollars per year starting at time $n$ that goes on forever. The present value of a delayed perpetuity is given by:
+$$
+\textbf{PV} = \sum_{t=n}^{\infty} \frac{C}{(1 + r)^t} = \frac{C}{r} \cdot \frac{1}{(1 + r)^{n-1}}
+$$
+note that when the first payment, which happens at time $n$, the formula above is for one year before the first payment.
 \subsection{Constant Annuity}
+You will recieve a fixed payment of $C$ dollars every year for a specified number of years. That is, a perpetuity with a finite horizon. The present value of a constant annuity is given by:
+$$
+\textbf{PV} = \sum_{t=1}^{n} \frac{C}{(1 + r)^t} 
+$$
+thus, substituting $x=\frac{1}{1+r}$ into \eqref{eq:geometric_series}:
+$$
+\textbf{PV} = \frac{C}{r} \left(\frac{1}{r} - \frac{1}{(1 + r)^n}\right)
+$$
+isolating $C$, we find the annuity factor:
+$$
+\textbf{AF} = \frac{1}{r} - \frac{1}{(1 + r)^n}
+$$
 \subsection{Growing Annuity}
+Similar to a growing perpetuity, you recieve a fixed payment of $C$ dollars at the end of each year with $C$ growing at a constant annual rate of $g$. By first principals:
+$$
+\textbf{PV} = \sum_{t=1}^{n} \frac{C \cdot (1 + g)^{t-1}}{(1 + r)^t}
+$$
+factoring constant $C$, we find:
+$$
+\textbf{PV} = C \cdot \sum_{t=1}^{n} \frac{(1 + g)^{t-1}}{(1 + r)^t}
+$$
+thus, substituting $x = \frac{1 + g}{1 + r}$ into \eqref{eq:geometric_series}:
+$$
+\textbf{PV} = C \cdot \frac{1 - \left(\frac{1 + g}{1 + r}\right)^n}{r - g}
+$$
+and the annuity factor is for a growing annuity is in general form is:
+$$
+\textbf{AF} = \frac{1 - \left(\frac{1 + g}{1 + r}\right)^n}{r - g}
+$$
 \section{Interest Rates and Compounding}
+A \textbf{simple interest} rate is when interest is paid only on the principal investment. That is, in simple terms:
+$$
+\textbf{FV} = \text{principal} + \text{principal} \cdot r \cdot t
+$$
+where $r$ is the interest rate and $t$ is the time period.
+
+\subsection{Compound Interest}
+A \textbf{compound interest} is interest paid on the initial investment and on interest accumulated in previous periods. That is:
+$$
+\textbf{FV} = \text{principal} \cdot (1 + r)^t
+$$
+
+The compounding interveal is the time between interest payments, or in other words, the frequency of which interest is added to the principal. The effective annual rate (EAR) is the annual rate of interest when compounding occurs more than once a year. The formula for the EAR is:
+$$
+\textbf{EAR} = \left(1 + \frac{r}{m}\right)^m - 1
+$$
+where $r$ is the nominal rate and $m$ is the number of compounding periods per year. Thus, to find the rate for each compounding period, we have:
+$$
+R = \frac{r}{m}
+$$
+
+The concept of continuous compounding is when the compounding period is infinitely small. The formula for continuous compounding is:
+$$
+\textbf{FV} = \text{principal} \cdot e^{r \cdot t}
+$$
+We can also do the reverse, that is, given the EAR, we can find the nominal rate of continuous compouding by:
+$$
+r = \ln(1 + r)
+$$
+
+An \textbf{amortization schedule} is a table that details each loan payment's allocation between interest and principal. An example of an amortization schedule is shown below:
+\begin{examplebox}{Example}
+	Consider a 3-year \$100,000 loan at a annual rate of 8\%. We first use the annuity formula to find the annual payment:
+	$$
+	\$100,000 = C\cdot \textbf{AF} = C \cdot (\frac{1}{0.08}-\frac{1}{(1+0.08)^3}) 
+	$$
+	Now, we can solve for $C$ to find the annual payment. 
+	$$
+	C = \$38803.35
+	$$
+	Now, we can construct the amortization schedule:
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lllll}
+		\toprule
+		\textbf{Time} & \textbf{Prin. Outstanding} & \textbf{Payment} & \textbf{Int. Paid} & \textbf{Prin. Paid} \\
+		\midrule
+		0 & 100,000 &&&\\
+		1 & 69,196.65 & 38,803.35 & 8000.00 & 30803.35\\
+		2 & 35,929.03 & 38,803.35 & 5535.73 & 33267.32\\
+		3 & 0 & 38,803.35 & 2874.32 & 35,929.03\\
+		\bottomrule
+	\end{tabular}
+	\caption{Amortization Schedule for 100,000 Loan}
+\end{table}
+
+\end{examplebox}
+
+\section{Bonds}
+A bond is an obligation to pay a fixed amount of money to the lender plus a specified coupon rate. A \textit{Pure Discount Bond} is a bont where the rate is 0, that is, the bond face value only is payed at maturity.
+
+\textbf{Bond Pricing} is the process of determining the fair price of a bond. We can calculate the price of a bond by using the ask and bid rates. The \textbf{ask rate} is the price at which the bond is sold, and the \textbf{bid rate} is the price at which the bond is bought. The \textbf{bid-ask spread} is the difference between the ask and bid rates.
+
+The \textbf{yield to maturity} (YTM) is the rate of return anticipated on a bond if it is held until the maturity date. We can say that if:
+\begin{itemize}
+	\item The bond is selling at par, then the YTM = coupon rate.
+	\item The bond is selling at a discount, then the YTM > coupon rate.
+	\item The bond is selling at a premium, then the YTM < coupon rate.
+\end{itemize}
+
+A \textbf{Forward Rate} is the rate of interest that can be locked in today for a future investment. For example, you are able to lock in a rate for a \$1000 investment one year in the future. To calculate the forward rate, we use the formula:
+$$
+(1 + r_2)^2 = (1 + r_1)(1 + f)
+$$
+where $r_1$ is the one year rate, $r_2$ is the two year rate, and $f$ is the forward rate.
+
+\section{Stocks}
+A share of common stock simply represents a claim on the assets of a corporation. The value of a share of stock can come from:
+\begin{itemize}
+	\item Dividends
+	\item Capital gains (or losses)
+\end{itemize}
+thus, the expected return for holding a share for one period can be generalized to:
+$$
+\text{Expected Return Rate}= r = \frac{\text{DIV}_1 + (P_1-P_0)}{P_0}
+$$
+thus, viewing $r$ as a discount rate, we can find the present value:
+$$
+P_0 = \frac{\text{DIV}_1}{r} + \frac{P_1}{(1 + r)}
+$$
+and, now to find $P_1$, we can use the same formula:
+$$
+P_1 = \frac{\text{DIV}_2}{r} + \frac{P_2}{(1 + r)}
+$$
+by this generalization, we can find the present value of a stock over a time horizon as:
+$$
+P_0 = \sum_{t=1}^{T} [\frac{\text{DIV}_t}{(1 + r)^t}]+ \frac{P_T}{(1 + r)^T}
+$$
+under the assumption that as $T \to \infty$, $\frac{P_T}{(1 + r)^T} \to 0$, that is intuitively, the discount will be so large that the value of the stock will be negligible, we have:
+$$
+P_0 = \sum_{t=1}^{\infty} \frac{\text{DIV}_t}{(1 + r)^t}
+$$
+which outlines a key concept in stock valuation where the value of a share of common stock is the present value of all future dividends that are expected to be paid.
+
+Thus, the valuation of a stock can be seen as a calculation of simple cash flow streams, where the cash flow is the dividend and depending on the dividend policy, we can have a constant, growing or some combination of cash flows.
+
+
+\subsection{Interpreting Discount Rates}
+The discount rate $r$ is the expected return on the stock. The discount rate can be broken down into \textbf{dividend yield}, that is, the expected dividend divided by the current price, and the \textbf{capital gains yield}, that is, the expected price appreciation divided by the current price. Thus, we can write the discount rate as:
+$$
+r = \frac{\text{DIV}_1}{P_0} + g = \frac{\text{DIV}_1}{P_0} + \frac{P_1 - P_0}{P_0}
+$$
+
+The earnings of a company can be broken down into dividend payouts and retained earnings, normalizing by the number of shares, we have the \textbf{earnings per share} (EPS). The \textbf{dividend payout ratio} is the percentage of earnings paid out as dividends, and the \textbf{plowback ratio} is the percentage of earnings retained by the company. Always, $1 = \text{dividend payout ratio} + \text{plowback ratio}$.
+
+EPS is a key metric for investors as it provides a measure of a company's profitability, that is, the amount of profit generated per share of stock. Using EPS, we can calculate the \textbf{price-to-earnings ratio} (P/E).
+
+Another concept is \textbf{Return on Equity} (ROE), which is a measure of a company's profitability that takes a company's net income and divides it by the company's equity. ROE is a measure of how well a company is using its assets to generate profit. It must be part of the consideration when evaluating growth in a stock. We have the follwoing relationship:
+$$
+\text{EPS}_2 = \text{EPS}_1 + \text{Retained Earnings} \cdot \text{ROE}
+$$
+using the plowback ratio, we can find the growth rate:
+$$
+	g = \text{ROE} \cdot k
+$$
+
+\begin{examplebox}{Example}
+	Consider IBM at \$201 per share, with a dividend of \$6.74 per share, and a EPS of \$10.87. We can find $k$, the plowback ratio by:
+	$$
+		k = 1 - \frac{6.74}{10.87} = 0.38
+	$$
+	assuing a 10\% ROE, we can find the growth rate:
+	$$
+	g = 0.10 \cdot 0.38 = 0.038
+	$$
+	thus, the discount rate is:
+	$$
+		r = \frac{6.74}{201} + 0.038 = 0.072
+	$$
+	using FV, we can find the price of the stock in one year:
+	$$
+		201\cdot (1 + 0.072) = 215.04
+	$$
+	or solving for current value using cash flow streams:
+	$$
+		P_0 = \frac{6.74}{0.072-0.038} = 198
+	$$
+\end{examplebox}
+
+\subsection{Price-to-Earnings Ratio}
+The price-to-earnings ratio (P/E) is a measure of the price investors are willing to pay for a dollar of earnings. It's defined as:
+$$
+\text{P/E} = \frac{P_0}{E_1}
+$$
+where $P_0$ is the current price of the stock and $E_1$ is the expected earnings per share. 
+
+A higher P/E ratio indicates that investors are willing to pay more for a dollar of earnings and are expecting higher growth in the future. A lower P/E ratio indicates that investors are willing to pay less for a dollar of earnings and are expecting lower growth in the future.
+
+\subsection{Earning Streams}
+In some cases, all the earnings of a company are paid out as dividends, that is, the plowback ration is 0 and DIV=EPS. In this case, we can easily value the stock as:
+$$
+P_0 = \frac{\text{EPS}_1}{r}
+$$
+where $r$ is the discount rate. and the P/E ration is simply $\frac{1}{r}$. This is usually the case for more mature companies, or value stocks.
+
+In other cases, where a firm has positive NPV projects, the plowback ratio is positive, and the firm is expected to grow. We can now value the stock as:
+$$
+P_0 = \frac{\text{EPS}_1}{r} + \text{NPVGO}
+$$
+where NPVGO is the net present value of growth opportunities. The P/E ratio is now:
+$$
+\text{P/E} = \frac{1}{r} + \frac{\text{NPVGO}}{\text{EPS}_1}
+$$
+this is usually the case for growth stocks.
 

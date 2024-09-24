@@ -44,6 +44,8 @@
 \usepackage{tikz,lipsum,lmodern}
 \usepackage[most]{tcolorbox}
 \usepackage{enumerate}
+\usepackage{booktabs} % For nice tables
+\usepackage{float} % For forcing tables and figures to be placed where you want them
 
 %----------------------------------------------------------------------------------------
 %	ADD YOUR DEFINITIONS AND COMMANDS
@@ -141,10 +143,10 @@ submissiondate = {F24},
 %	APPENDICES (optional)
 %-------------------------------------------------------------------------------
 
-% \addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for aesthetics
-% \appendix
-% \numberedsection % Regular sections following
-% \input{apx/appendixA}
+ \addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for aesthetics
+ \appendix
+ \numberedsection % Regular sections following
+ \input{appendix/calc.tex}
 % \input{apx/appendixB}
 % \input{apx/appendixC}
 

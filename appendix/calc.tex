@@ -1,0 +1,93 @@
+\section{TI-Nspire™ Finance Functions}
+This appendix provides an overview of the finance functions available in the TI-Nspire calculator, their uses, and examples.
+
+\subsection{Finance Solver}
+The Finance Solver is used to compute various financial values, such as present value, future value, interest rate, number of periods, and payments. This function allows users to input known values and solve for the unknown.
+
+\begin{examplebox}{Finance Solver}
+Suppose you want to calculate the monthly payment on a loan of \$10,000 at an annual interest rate of 5\% over 5 years. 
+You would set the following values:
+\begin{itemize}
+    \item N = 60 (months)
+    \item I = 5 (annual interest rate)
+    \item PV = -10000 (loan amount)
+    \item FV = 0 (since the loan is fully paid off)
+    \item PmtAt = 0 (end of the period)
+\end{itemize}
+Solve for the payment (\texttt{Pmt}).
+\end{examplebox}
+
+\subsection{Time Value of Money (TMV) Functions}
+These functions are used to calculate various aspects of time value of money, such as the number of periods, interest rate, present value, payment amount, and future value.
+
+\begin{itemize}
+    \item \texttt{tvmN(I,PV,Pmt,FV,[PpY],[CpY],[PmtAt])}: Calculates the number of payment periods.
+    \item \texttt{tvmI(N,PV,Pmt,FV,[PpY],[CpY],[PmtAt])}: Calculates the interest rate per year.
+    \item \texttt{tvmPV(N,I,Pmt,FV,[PpY],[CpY],[PmtAt])}: Calculates the present value.
+    \item \texttt{tvmPmt(N,I,PV,FV,[PpY],[CpY],[PmtAt])}: Calculates the amount of each payment.
+    \item \texttt{tvmFV(N,I,PV,Pmt,[PpY],[CpY],[PmtAt])}: Calculates the future value.
+\end{itemize}
+
+\begin{examplebox}{TMV Functions}
+Calculate the future value of an investment where \$1,000 is invested at 6\% annual interest for 10 years. 
+Set the following:
+\begin{itemize}
+    \item N = 10
+    \item I = 6
+    \item PV = -1000
+    \item Pmt = 0 (no additional payments)
+    \item FV = Solve for this
+\end{itemize}
+The future value is \$1,790.85.
+\end{examplebox}
+
+\subsection{Amortization Functions}
+These functions calculate the principal and interest components of payments over a range of periods.
+
+\begin{itemize}
+    \item \texttt{amortTbl(NPmt,N,I,PV,[Pmt],[FV],[PpY],[CpY],[PmtAt])}: Returns an amortization table as a matrix.
+    \item \texttt{bal(NPmt,N,I,PV,[Pmt],[FV],[PpY],[CpY],[PmtAt])}: Calculates the balance after a specified payment.
+    \item $\Sigma$\texttt{Int(NPmt1,NPmt2,N,I,PV,[Pmt],[FV],[PpY],[CpY],[PmtAt])}: Calculates the sum of interest during a specified range of payments.
+    \item $\Sigma$\texttt{Prn(NPmt1,NPmt2,N,I,PV,[Pmt],[FV],[PpY],[CpY],[PmtAt])}: Calculates the sum of principal during a specified range of payments.
+\end{itemize}
+
+\begin{examplebox}{Amortization Functions}
+Given a loan of \$5,000 at an interest rate of 5\% for 3 years, compute the amortization table for the first 12 months. Use:
+\begin{itemize}
+    \item NPmt = 12 (first 12 months)
+    \item N = 36 (total payments)
+    \item I = 5 (annual interest rate)
+    \item PV = -5000
+\end{itemize}
+The amortization table will display the amount paid towards principal and interest for each month.
+\end{examplebox}
+
+\subsection{Cash Flow Functions}
+These functions calculate metrics such as the net present value (NPV) and the internal rate of return (IRR) for cash flows.
+
+\begin{itemize}
+    \item \texttt{npv(rate,CF0,CFList,[CFFreq])}: Calculates the net present value of cash flows.
+    \item \texttt{irr(CF0,CFList,[CFFreq])}: Calculates the internal rate of return for cash flows.
+\end{itemize}
+
+\begin{examplebox}{Cash Flow Functions}
+Suppose you have an investment with the following cash flows: an initial investment of \$1,000 and cash inflows of \$300, \$400, \$500 over 3 years. The discount rate is 8\%. Use the \texttt{npv} function to find the NPV of the investment.
+\end{examplebox}
+
+\subsection{Interest Conversion Functions}
+These functions help convert between nominal and effective interest rates.
+
+\begin{itemize}
+    \item \texttt{eff(nomRate,CpY)}: Converts nominal interest rate to effective rate.
+    \item \texttt{nom(effectiveRate,CpY)}: Converts effective interest rate to nominal rate.
+\end{itemize}
+
+\begin{examplebox}{Interest Conversion Functions}
+Convert a nominal interest rate of 5\% compounded quarterly to its effective rate using:
+\begin{itemize}
+    \item Nominal Rate = 5\%
+    \item CpY = 4 (quarterly)
+\end{itemize}
+The effective rate is approximately 5.095\%.
+\end{examplebox}
+
